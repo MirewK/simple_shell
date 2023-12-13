@@ -5,6 +5,7 @@
 #include <sys/wait.h>
 
 /*
+*launch- function to launch the program
 *@pid_t pid - Process 
 *@int status - Status of the execution
 */
