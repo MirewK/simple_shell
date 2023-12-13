@@ -2,16 +2,16 @@
 
 void execute(char **argv) {
   if (!argv[0]) {
-    return; // Empty command
+    return; /* Empty command */
   }
 
-  // Get PATH environment variable
+  /* Get PATH environment variable */
   char *value = getenv("PATH");
 
-  // Build linked list of paths in PATH
+  /* Build linked list of paths from PATH */
   head = linkpath(value);
 
-  // Find the executable path
+  /* Find the executable path */
   char *pathname = _which(argv[0], head);
 
   if (!pathname) {
@@ -19,15 +19,15 @@ void execute(char **argv) {
     return;
   }
 
-  // Fork and execute the command
+  /* Fork and execute the command */
   pid_t pid = fork();
 
   if (pid == 0) {
-    // Child process
+    /* Child process */
     execve(pathname, argv, environ);
-    exit(1); // If execve fails
+    exit(1); /* If execve fails */
   } else {
-    // Parent process
+    /* Parent process */
     waitpid(pid, NULL, 0);
   }
 }
