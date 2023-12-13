@@ -1,16 +1,20 @@
 #include "shell.h"
 
 ssize_t len = 0;
-char *buff = NULL, *value, *pathname;
+char *buff = NULL, *value = NULL, *pathname = NULL;
 size_t size = 0;
-list_path *head = '\0';
+list_path *head = NULL;
 
-void main(void) {
+int main(void) {
   signal(SIGINT, sig_handler);
   while (len != EOF) {
-    _isatty();
+    if (_isatty()) {
+      printf("simple_shell> ");
+    }
     len = getline(&buff, &size, stdin);
-    _EOF(len, buff);
+    if (len == EOF) {
+      break;
+    }
     execute(parse_args(buff));
   }
   free_list(head);
@@ -25,9 +29,6 @@ void sig_handler(int sig_num) {
   }
 }
 
-void _isatty(void) {
-  // Check if input is coming from a terminal
-  if (isatty(STDIN_FILENO)) {
-    printf("simple_shell> ");
-  }
+int _isatty(void) {
+  return isatty(STDIN_FILENO);
 }
