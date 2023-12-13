@@ -11,7 +11,7 @@ int main(void)
     int status; /* Status of the execution */
 
     do {
-        printf("> "); /* Display the prompt */
+        write("> simple_shell> "); /* Display the prompt */
         line = read_line(); /* Read the input line */
         args = split_line(line); /* Split the line into arguments */
         status = execute(args); /* Execute the arguments */
