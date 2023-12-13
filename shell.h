@@ -15,6 +15,7 @@ typedef struct list_path {
   struct list_path *next;
 } list_path;
 
+/* Function prototypes */
 void sig_handler(int sig_num);
 int _isatty(void);
 char **parse_args(char *buff);
