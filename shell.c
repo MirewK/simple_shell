@@ -6,22 +6,22 @@ size_t size = 0;
 list_path *head = NULL;
 
 int main(void) {
-  // Add signal handler for SIGINT
+  /* Register signal handler for SIGINT */
   signal(SIGINT, sig_handler);
 
   while ((len = getline(&buff, &size, stdin)) != EOF) {
-    // Check if input is coming from a terminal
+    /* Check if input is coming from a terminal */
     if (_isatty()) {
       printf("simple_shell> ");
     }
 
-    // Parse arguments
+    /* Parse arguments */
     char **argv = parse_args(buff);
 
-    // Execute command
+    /* Execute command */
     execute(argv);
 
-    // Free dynamically allocated memory
+    /* Release allocated memory */
     free_list(head);
     free(buff);
   }
