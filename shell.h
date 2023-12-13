@@ -1,23 +1,24 @@
-#ifndef SHELL_H
-#define SHELL_H
+#ifndef _SHELL_H_
+#define _SHELL_H_
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
+#include <unistd.h>
 #include <sys/wait.h>
-#include <sys/types.h>
-#include <errno.h>
-#include <stddef.h>
-#include <sys/stat.h>
-#include <signal.h>
 
-/* Function prototypes */
-char *read_line(void);
-char **split_line(char *line);
-int launch(char **args);
-int execute(char **args);
+#define MAX_LINE_LENGTH 256
+#define MAX_ARGS 32
 
+typedef struct list_path {
+  char *path;
+  struct list_path *next;
+} list_path;
 
+void sig_handler(int sig_num);
+void _isatty(void);
+char **parse_args(char *buff);
+void execute(char **argv);
+void free_list(list_path *head);
 
-#endif
+#endif /* _SHELL_H_ */
