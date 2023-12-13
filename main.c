@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include "shell.h"
 
-/* @char *line - Buffer for the input line
+/* 
+* main- main function for the shell
+*@char *line - Buffer for the input line
    * @char **args - Array of arguments
    * @int status - Status of the execution 
 */
