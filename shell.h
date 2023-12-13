@@ -16,7 +16,7 @@ typedef struct list_path {
 } list_path;
 
 void sig_handler(int sig_num);
-void _isatty(void);
+int _isatty(void);
 char **parse_args(char *buff);
 void execute(char **argv);
 void free_list(list_path *head);
