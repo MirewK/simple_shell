@@ -6,6 +6,15 @@
 #define BUFSIZE 1024
 #define DELIM " \t\r\n\a"
 
+/*
+*@int bufsize = BUFSIZE -Size of the buffer
+*  @int position -Position in the buffer
+*   @char **tokens - Array of tokens
+ *   @char *token -Pointer to a token 
+* @char *line = NULL-Pointer to the line
+ *   @size_t bufsize -Size of the buffe
+  *  @ssize_t nread -Number of characters read
+*/
 /* Function to read a line from stdin */
 char *read_line(void)
 {
