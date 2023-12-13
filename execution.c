@@ -4,6 +4,11 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
+/*
+*pid_t pid - Process 
+*int status - Status of the execution
+*/
+
 /* Function to launch a program with the given arguments */
 int launch(char **args)
 {
