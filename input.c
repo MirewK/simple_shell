@@ -7,6 +7,8 @@
 #define DELIM " \t\r\n\a"
 
 /*
+* read_line-function to read a line 
+* split_line- split multiple lines
 *@int bufsize = BUFSIZE -Size of the buffer
 *  @int position -Position in the buffer
 *   @char **tokens - Array of tokens
