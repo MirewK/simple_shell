@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include "shell.h"
 
+/* @char *line - Buffer for the input line
+   * @char **args - Array of arguments
+   * @int status - Status of the execution 
+*/
+
 /* Main function */
 int main(void)
 {
