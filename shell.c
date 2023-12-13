@@ -1,34 +1,30 @@
 #include "shell.h"
 
 ssize_t len = 0;
-char *buff = NULL, *value = NULL, *pathname = NULL;
+char *buff = NULL;
 size_t size = 0;
 list_path *head = NULL;
 
 int main(void) {
+  // Add signal handler for SIGINT
   signal(SIGINT, sig_handler);
-  while (len != EOF) {
+
+  while ((len = getline(&buff, &size, stdin)) != EOF) {
+    // Check if input is coming from a terminal
     if (_isatty()) {
       printf("simple_shell> ");
     }
-    len = getline(&buff, &size, stdin);
-    if (len == EOF) {
-      break;
-    }
-    execute(parse_args(buff));
+
+    // Parse arguments
+    char **argv = parse_args(buff);
+
+    // Execute command
+    execute(argv);
+
+    // Free dynamically allocated memory
+    free_list(head);
+    free(buff);
   }
-  free_list(head);
-  free(buff);
+
   return 0;
-}
-
-void sig_handler(int sig_num) {
-  if (sig_num == SIGINT) {
-    printf("\n");
-    fflush(stdout);
-  }
-}
-
-int _isatty(void) {
-  return isatty(STDIN_FILENO);
 }
