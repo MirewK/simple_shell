@@ -5,7 +5,7 @@ void execute(char **argv) {
     return; // Empty command
   }
 
-  value = _getenv("PATH");
+  value = getenv("PATH");
   head = linkpath(value);
   pathname = _which(argv[0], head);
 
