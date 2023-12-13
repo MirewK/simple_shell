@@ -7,7 +7,7 @@ char **parse_args(char *buff) {
 
   while (token != NULL) {
     if (*token == '"' || *token == '\'') {
-      // Handle quoted arguments
+      /* Handle quoted arguments */
       char quote = *token;
       token++;
       char *arg = malloc(strlen(token) + 1);
@@ -18,7 +18,7 @@ char **parse_args(char *buff) {
       arg[i] = '\0';
       argv[argc++] = arg;
     } else {
-      // Handle non-quoted arguments
+      /* Handle non-quoted arguments */
       argv[argc++] = token;
     }
     token = strtok(NULL, " \t\n");
