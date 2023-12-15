@@ -32,7 +32,7 @@ int shell_exit(char **args, char *input);
 /* Handle various symbols */
 char *handle_comment(char *input);
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
-pid_t fork(void);
+void pid_t fork(void);
 pid_t wait(int *wstatus);
 int execve(const char *pathname, char *const argv[],char *const envp[]);
 char *strtok(char *str, const char *delim);
