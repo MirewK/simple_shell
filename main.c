@@ -1,30 +1,70 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "shell.h"
 
-/* 
-* main- main function for the shell
-*@char *line - Buffer for the input line
-   * @char **args - Array of arguments
-   * @int status - Status of the execution 
-*/
+/**
+  * main - Getline function
+  * @argc: Argument count
+  * @argv: Array of argument values
+  *
+  * Return: 0 on success
+  */
 
-/* Main function */
-int main(void)
+int main(int argc, char **argv)
 {
-    char *line; /* Buffer for the input line */
-    char **args; /* Array of arguments */
-    int status; /* Status of the execution */
+        (void)argc, (void)argv;
+        char *buf = NULL, *token;
+        size_t count = 0;
+        ssize_t nread;
+        pid_t child_pid;
+        int i, status;
+        char **array;
 
-    do {
-        printf("> "); /* Display the prompt */
-        line = read_line(); /* Read the input line */
-        args = split_line(line); /* Split the line into arguments */
-        status = execute(args); /* Execute the arguments */
+        while (1)
+        {
+                write(STDOUT_FILENO, "SimpleShell$ ", 9);
 
-        free(line); /* Free the allocated memory */
-        free(args);
-    } while (status); /* Loop until status is zero */
+                nread = getline(&buf, &count, stdin);
 
-    return 0;
+                if (nread ==  -1)
+                {
+                        perror("Exiting shell");
+                        exit(1);
+                }
+
+                token = strtok(buf, " \n");
+
+                array = malloc(sizeof(char*) * 1024);
+                i = 0;
+
+                while (token)
+                {
+                        array[i] = token;
+                        token = strtok(NULL, " \n");
+                        i++;
+                }
+
+                array[i] = NULL;
+
+                child_pid = fork();
+
+                if (child_pid == -1)
+                {
+                        perror("Failed to create.");
+                        exit (41);
+                }
+
+                if (child_pid == 0)
+                {
+                        if (execve(array[0], array, NULL) == -1)
+                        {
+                                perror("Failed to execute");
+                                exit(97);
+                        }
+                }
+                else
+                {
+                        wait(&status);
+                }
+        }
+        free(buf);
+        return (0);
 }
