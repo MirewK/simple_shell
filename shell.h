@@ -29,7 +29,6 @@ void handle_cd(char **args, int num_args);
 void handle_exit(char *input, int exit_status);
 int shell_exit(char **args, char *input);
 
-
-
-
+/* Handle various symbols */
+char *handle_comment(char *input);
 #endif /* SHELL_H */
