@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
-  * print_prompt - Print the prompt to the user
+  * print_prompt - Print the promp
   */
 
 void print_prompt(void)
@@ -11,9 +11,9 @@ void print_prompt(void)
 }
 
 /**
-  * read_input - Reads the input from the users
+  * read_input - Reads the in the users
   *
-  * Return: Character variable to the program
+  * Return: Character varthe program
   */
 
 char *read_input(void)
@@ -39,10 +39,10 @@ char *read_input(void)
 
 
 /**
-  * execute_command - Executes the input from the buffer
-  * @input: The argument from the buffer
+  * execute_command - Executes  the buffer
+  * @input: The arg the buffer
   * @argv: Array of argument
-  * @env: Environment variables
+  * @env: Env var
   */
 
 void execute_command(char *input, char *argv[], char **env)
@@ -88,11 +88,11 @@ void execute_command(char *input, char *argv[], char **env)
 }
 
 /**
-  * tokenize_input - Tokenizes the input strings
+  * tokenize_input - the input strings
   * @input: Argument input
-  * @args: The array of strings
+  * @args: array of strings
   *
-  * Return: Number of the items tokenized
+  * Return: Numbertokenized
   */
 
 int tokenize_input(char *input, char *args[])
@@ -115,11 +115,11 @@ int tokenize_input(char *input, char *args[])
 }
 
 /**
-  * handle_builtin_commands - Handle all the built in commands
-  * @args: Arguments to the built in commands
-  * @num_args: Number of argument
-  * @input: The input command
-  * @env: The environment variables
+  * handle_builtin_commands - Handle all commands
+  * @args: Arg to commands
+  * @num_args: Number of arg
+  * @input: The in command
+  * @env: The env var
   *
   * Return: 1 if successful 0, if unsuccessful
   */
